@@ -4,7 +4,7 @@
 \alias{darwin_hypothesis}
 \title{Darwin's naturalization conundrum}
 \usage{
-darwin_hypothesis(dat, phy, iter, grids = "grids", species = "species")
+darwin_hypothesis(dat, phy, iter)
 }
 \arguments{
 \item{dat}{A data frame}
@@ -12,10 +12,6 @@ darwin_hypothesis(dat, phy, iter, grids = "grids", species = "species")
 \item{phy}{A phylogenetic tree}
 
 \item{iter}{Numeric, the number of permutations}
-
-\item{grids}{The column with the grid cells}
-
-\item{species}{The column with the species names}
 }
 \value{
 a vector with the mean distance between species

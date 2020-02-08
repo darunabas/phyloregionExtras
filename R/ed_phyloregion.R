@@ -94,18 +94,18 @@ ed_phyloregion <- function(x, k = 10, method = "average", shp = NULL, ...) {
   evol_distinct <- colSums(region.mat) / (nrow(region.mat) - 1)
   evol_distinct <- data.frame(ED = evol_distinct)
   evol_distinct <- cbind(cluster = rownames(evol_distinct),
-    data.frame(evol_distinct, row.names = NULL))
+                         data.frame(evol_distinct, row.names = NULL))
 
   if (length(shp) == 0) {
 
-      ind2 <- match(dx$cluster, evol_distinct$cluster)
-      dx <- cbind(dx, evol_distinct[ind2,])
-      dx <- dx[, c("grids", "cluster", "ED")]
-      evol_distinct <- Reduce(function(x, y) merge(x, y, by = "cluster", all = TRUE),
-                              list(evol_distinct, v))
-      evol_distinct <- evol_distinct[, c("cluster", "COLOURS", "ED")]
+    ind2 <- match(dx$cluster, evol_distinct$cluster)
+    dx <- cbind(dx, evol_distinct[ind2,])
+    dx <- dx[, c("grids", "cluster", "ED")]
+    evol_distinct <- Reduce(function(x, y) merge(x, y, by = "cluster", all = TRUE),
+                            list(evol_distinct, v))
+    evol_distinct <- evol_distinct[, c("cluster", "COLOURS", "ED")]
     r <- list(evol_distinct = evol_distinct, region.dist = region.dist,
-      region.df = dx, NMDS = c1)
+              region.df = dx, NMDS = c1)
     class(r) <- c("list", "phyloregion")
     r
   } else {
@@ -133,7 +133,7 @@ ed_phyloregion <- function(x, k = 10, method = "average", shp = NULL, ...) {
     proj4string(m1) <- proj4string(shp)
 
     y <- Reduce(function(x, y) merge(x, y, by = "cluster", all = TRUE),
-      list(region, v, m1))
+                list(region, v, m1))
 
     index <- match(dx$cluster, y$cluster)
     z <- cbind(dx, ED = y$ED[index], COLOURS = y$COLOURS[index])
