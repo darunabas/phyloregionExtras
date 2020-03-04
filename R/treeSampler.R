@@ -1,14 +1,14 @@
 #' Subset trees from posterior distribution of trees.
 #'
-#' This function randomly samples a subset of trees from a posterior 
+#' This function randomly samples a subset of trees from a posterior
 #' distribution of trees derived from multiple runs of MrBayes.
 #'
-#' @param wd A path to the working directory with the distributions of 
+#' @param wd A path to the working directory with the distributions of
 #' multiple phylogenetic trees.
 #' @param n The desired number of subsets of trees. This defaults to 100.
 #' @param \dots arguments passed among methods.
-#' 
-#' @rdname tree.sampler
+#'
+#' @rdname tree_sampler
 #' @importFrom ape read.tree
 #' @export
 #'
@@ -20,7 +20,7 @@
 #' @export
 
 
-tree.sampler <- function(wd, n = 100, ...) {
+tree_sampler <- function(wd, n = 100, ...) {
   read_treelines <- function(fl) {
     readLines(con = fl)
   }
