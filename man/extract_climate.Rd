@@ -9,7 +9,7 @@ extract_climate(x, y, val = "val", FUN = sd, ...)
 \arguments{
 \item{x}{A raster file of the environmental variable}
 
-\item{y}{Spatial polygon data frame corresponding to
+\item{y}{Spatial polygons data frame corresponding to
 the study area of interest to extract the variable.}
 
 \item{val}{String to rename the column with the extracted
@@ -24,7 +24,7 @@ A list or data frame.
 }
 \description{
 This function extracts environmental variables from raster
-files in within spatial polygons.
+files within spatial spatial polygons.
 }
 \author{
 Barnabas H. Daru \email{darunabas@gmail.com}

@@ -10,6 +10,7 @@
 #' @keywords bioregion
 #' @importFrom ape keep.tip
 #' @importFrom stats cophenetic as.dist sd
+#' @importFrom utils txtProgressBar setTxtProgressBar
 #' @return a vector with the mean distance between species
 #'
 #' @author Barnabas H. Daru \email{darunabas@@gmail.com}
@@ -21,11 +22,13 @@ darwinize <- function(x, phy, iter){
   sub_tree <- phy
 
   y <- NULL
+  pb <- txtProgressBar(min = 0, max = iter, style = 3)
   for(i in seq_len(iter)){
     sub_tree$tip.label <- sub_tree$tip.label[sample(length(sub_tree$tip.label))]
     v <- keep.tip(sub_tree, x)
     v <- as.dist(cophenetic(v))
     y[i] <- mean(v)
+    setTxtProgressBar(pb, i)
   }
   res <- (mean(obs)-mean(y))/sd(y)
   res
